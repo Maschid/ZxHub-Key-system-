@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZxHub Key Generator</title>
+    <style>
+        body {
+            background-color: #000;
+            color: #0f0;
+            font-family: 'Courier New', Courier, monospace;
+            text-align: center;
+            padding: 50px;
+            margin: 0;
+        }
+
+        h1 {
+            font-size: 32px;
+            margin-bottom: 30px;
+        }
+
+        #generated-key {
+            font-size: 24px;
+            background-color: #111;
+            color: #0f0;
+            padding: 10px;
+            border: 2px solid #0f0;
+            border-radius: 5px;
+            margin: 0 auto 20px;
+            width: 300px;
+        }
+
+        footer {
+            color: #999;
+            font-size: 14px;
+            position: fixed;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    </style>
+</head>
+<body>
+    <h1>ZxHub Key Generator</h1>
+    <div id="generated-key"></div>
+    <footer>&copy; 2024 ZxHub Key Generator</footer>
+    <script>
+        // Function to generate a random key
+        function generateRandomKey() {
+            const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+            let key = '';
+            for (let i = 0; i < 10; i++) {
+                key += characters.charAt(Math.floor(Math.random() * characters.length));
+            }
+            return key;
+        }
+
+        // Function to generate a unique identifier for each user
+        function generateUniqueIdentifier() {
+            return Math.random().toString(36).substring(2) + Date.now().toString(36);
+        }
+
+        // Function to generate a unique key for each user
+        function generateUniqueKey() {
+            const randomKey = generateRandomKey();
+            const uniqueIdentifier = generateUniqueIdentifier();
+            return randomKey + '-' + uniqueIdentifier;
+        }
+
+        // Function to display the generated key
+        function displayKey() {
+            const keyElement = document.getElementById('generated-key');
+            const key = generateUniqueKey();
+            keyElement.textContent = `Your key: ${key}`;
+        }
+
+        // Display the key when the page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            displayKey();
+        });
+    </script>
+</body>
+</html>
